@@ -1,6 +1,6 @@
 
 import random
-import random
+
 
 def look_away(first_move, second_move, third_move):
     points = 0
@@ -106,22 +106,29 @@ def games_room(name):
     print(f"What game would you like to play {name}?")
     game = int(input("1- Look Away\n2- Slot Machine\n3- Pig Dice\n"))
     while type(game) == int and 1<=game<=3:
-        if game == 1:
-            moves = []
+        if game == 1: #Look Away Game
+            first_move = 0
+            second_move = 0
+            third_move = 0 # Placeholders for each move
+            
             for i in range(3):
                 move = int(input("Input move: "))
-                moves.append(move)
+                if i == 0:
+                    first_move = move
+                elif i == 1:
+                    second_move = move
+                else:
+                    third_move = move   # For each round, the move is saved because i in range(3) goes through 0,1,2
 
-            first_move,second_move,third_move = moves 
-
-            return look_away(first_move,second_move,third_move)
-        if game == 2:
+                    return look_away(first_move,second_move,third_move)
+        if game == 2: # Slot Machine
             bet = int(input("Enter your bet: "))
             return print(slot_machine(bet))
-        else:
+        
+        else: # Pig Dice
             threshold = int(input("Enter threshold: "))
             return print(pig_dice(threshold))
-    print("Enter A Valid Number! (1-3)")
+    print("Enter A Valid Number! (1-3)") # If not a valid input as per the while loop above, it will ask user for a valid number
         
 
 #games_room("zak")
