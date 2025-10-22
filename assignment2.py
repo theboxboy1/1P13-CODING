@@ -6,12 +6,12 @@ def look_away(first_move, second_move, third_move):
     points = 0
 
     for round_num in range(3): # Loops over three times for three rounds
-        # assign the correct player move based on the round
-        if round_num == 1:
+        # Assigns the correct player move based on the round
+        if round_num == 0:
             player_move = first_move
-        elif round_num == 2:
+        elif round_num == 1:
             player_move = second_move
-        else:  # round_num == 3
+        else: 
             player_move = third_move
 
         print(f"///////ROUND {round_num+1}/3 ///////\n")
@@ -78,7 +78,7 @@ def slot_machine(bet):
         return 0
 
     
-print(slot_machine(1))
+#print(slot_machine(1))
         
         
 
@@ -131,4 +131,4 @@ def games_room(name):
     print("Enter A Valid Number! (1-3)") # If not a valid input as per the while loop above, it will ask user for a valid number
         
 
-#games_room("zak")
+games_room("zak")
