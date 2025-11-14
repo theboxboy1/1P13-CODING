@@ -1,6 +1,7 @@
-import bcrypt
 
 def sign_up():
+    import bcrypt
+
     ## load existing user ids
     existing_users = []
     with open("users.csv", "r") as file:
