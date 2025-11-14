@@ -1,0 +1,83 @@
+# !/usr/bin/env python3
+# coding: utf-8
+# --------------------------------------------------------------------------------
+
+import sys
+
+sys.path.append("../")
+
+from time import sleep
+from Common.qarm_interface_wrapper import *
+
+GRIPPER_IMPLEMENTATION = 1
+arm = QArmInterface(GRIPPER_IMPLEMENTATION)
+scan_barcode = BarcodeScanner.scan_barcode
+
+# --------------------------------------------------------------------------------
+# STUDENT CODE BEGINS
+#
+
+# home position (x,y,z):(0.4286260279762155, 0.00032883239189427694, 0.47260234589243955)
+
+# box position (x,y,z): (0.24088816810517527, -0.30158927247740874, 0.22464027501111783)
+
+
+
+
+box_position = [0.24088816810517527, -0.30158927247740874, 0.22464027501111783]
+
+sponge_position = [0.601589513943846, 0.18405054582466013, 0.1017034840790052]
+
+
+
+#arm.set_arm_position(box_position)
+
+arm.home()
+sleep(1)
+arm.rotate_base(17)
+sleep(1)
+arm.rotate_gripper(-80)
+sleep(1)
+arm.rotate_elbow(-25)
+sleep(1)
+arm.rotate_shoulder(52)
+sleep(1)
+arm.rotate_gripper(80)
+sleep(1)
+
+print(arm.get_arm_position())
+
+arm.rotate_shoulder(-52)
+sleep(1)
+arm.home()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ---------------------------------------------------------------------------------
+# STUDENT CODE ENDS
+# ---------------------------------------------------------------------------------
+
+arm.end_arm_connection()
