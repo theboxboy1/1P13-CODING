@@ -5,7 +5,7 @@ def new_code(filename, duplicates, n):
     
     # Read file lines into list
     with open(filename) as f:
-        file = f.read()
+        file = [line.strip() for line in f]
     
     for color in file:
         new_colors.append(color)
@@ -32,7 +32,7 @@ def new_code(filename, duplicates, n):
                 while replacement in unique_colors:
                     replacement = random.choice(file)
                 unique_colors.append(replacement)
-        new_colors = unique_colors
+        new_colors = unique_colors # set unique colors to the new_colors list... no duplicates    
 
     # if list shorter than n (can happen if too many duplicates removed)
     while len(new_colors) < n:
@@ -46,5 +46,11 @@ def new_code(filename, duplicates, n):
 def score_red(code, guess):
     ...
     
+
+
 def score_white(code, guess, redlist):
     ...
+
+
+
+
