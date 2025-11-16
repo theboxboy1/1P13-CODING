@@ -37,6 +37,7 @@ def new_code(filename, duplicates, n):
     Output: None.
     
     """
+    ## Processing
     
     new_colors = []
     
@@ -52,7 +53,9 @@ def new_code(filename, duplicates, n):
     # in the case that there are not enough colors AND duplicates are not allowed
     if not duplicates and n > len(file):
         return False
-
+    
+    ## Logic
+    
     # randomly remove a color until list length == n
     while len(new_colors) > n:
         delete = random.randint(0, len(new_colors) - 1)
@@ -74,12 +77,15 @@ def new_code(filename, duplicates, n):
                 unique_colors.append(replacement)
         new_colors = unique_colors # set unique colors to the new_colors list... no duplicates
 
+    ## Error-handling
+    
     # if list shorter than n (can happen if too many duplicates removed)
     while len(new_colors) < n:
         choice = random.choice(file)
         if duplicates or choice not in new_colors:  # will keep appending colors until list == n and will append only non-duplicate colors by checking the colors it previously appended to "new_colors"
             new_colors.append(choice) 
-
+            
+    ## Output
     return new_colors
 
 
@@ -96,11 +102,15 @@ def score_red(code, guess):
     Output: None.
     """
     
+    ## Processing and Error-checking
+    
     correct_position = 0
     positions = []
     
     if len(code) != len(guess):  
         return f"-1,{positions}"   # will return -1, []  if code and guess are different sizes
+    
+    ## Logic 
     
     for i in range(len(code)):  # if the index of a guess corresponds to the same index on the "code" list, the "positions" list will be updated to show that (i.e by appendng True)
         if code[i] == guess[i]:
@@ -108,7 +118,8 @@ def score_red(code, guess):
             correct_position += 1
         else:
             positions.append(False)
-
+            
+    ## Output
     return f"{correct_position},{positions}"
 
 
@@ -128,6 +139,7 @@ def score_white(code, guess, redlist):
     Output: None.
     
     """
+    ## Processing and Error-checking
     
     if not (len(code) == len(guess) == len(redlist)):  # checks to make sure all lists are of same length
         return -1
@@ -138,11 +150,14 @@ def score_white(code, guess, redlist):
             code[i] = ""
             guess[i] = ""  
 
+    ## Logic
+    
     sum_white = 0
     
     for color in guess:
         if color != "" and color in code:  # checks to see if color exists in the code, that way we know it is a correct color
             sum_white += 1 
-            code.remove(color) # the color we found is removed to prevent duplicates
-
+            code.remove(color) #the color we found is removed to prevent duplicates
+            
+    ## Output
     return sum_white
