@@ -24,7 +24,7 @@ scan_barcode = BarcodeScanner.scan_barcode
 
 
 
-box_position = [0.24088816810517527, -0.30158927247740874, 0.22464027501111783]
+dropbox_position = [0.24088816810517527, -0.30158927247740874, 0.22464027501111783]
 
 sponge_position = [0.601589513943846, 0.18405054582466013, 0.1017034840790052]
 
@@ -32,24 +32,68 @@ sponge_position = [0.601589513943846, 0.18405054582466013, 0.1017034840790052]
 
 #arm.set_arm_position(box_position)
 
-arm.home()
-sleep(1)
-arm.rotate_base(17)
-sleep(1)
-arm.rotate_gripper(-80)
-sleep(1)
-arm.rotate_elbow(-25)
-sleep(1)
-arm.rotate_shoulder(52)
-sleep(1)
+def lvl_1():
+    arm.home()
+
+    arm.rotate_gripper(-80)
+    arm.rotate_base(18)
+
+
+    arm.rotate_elbow(-15)
+
+    sleep(1)
+    arm.rotate_shoulder(53)
+    sleep(1)
+    arm.rotate_gripper(100)
+
+    arm.rotate_shoulder(-20)
+    arm.set_arm_position(dropbox_position)
+    arm.rotate_gripper(-80)
+
+#lvl_1()
+
 arm.rotate_gripper(80)
-sleep(1)
+#arm.home()
 
-print(arm.get_arm_position())
+def lvl_2():
+    arm.home()
 
-arm.rotate_shoulder(-52)
-sleep(1)
-arm.home()
+    arm.rotate_gripper(-80)
+    arm.rotate_base(11)
+
+    arm.rotate_elbow(-18)
+
+    sleep(1)
+    arm.rotate_shoulder(50)
+
+    arm.rotate_gripper(100)
+
+    arm.rotate_shoulder(-20)
+    arm.set_arm_position(dropbox_position)
+    arm.rotate_gripper(-80)
+
+#lvl_2()
+
+
+def lvl_3():
+
+    arm.home()
+
+    arm.rotate_gripper(-80)
+    arm.rotate_base(5)
+
+    arm.rotate_elbow(-15.8)
+
+    sleep(1)
+    arm.rotate_shoulder(50)
+    sleep(1)
+    arm.rotate_gripper(100)
+
+    arm.rotate_shoulder(-20)
+    arm.set_arm_position(dropbox_position)
+    arm.rotate_gripper(-80)
+
+#lvl_3()
 
 
 
@@ -80,4 +124,4 @@ arm.home()
 # STUDENT CODE ENDS
 # ---------------------------------------------------------------------------------
 
-arm.end_arm_connection()
+#arm.end_arm_connection()
