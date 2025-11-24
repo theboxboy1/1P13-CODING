@@ -15,7 +15,9 @@ scan_barcode = BarcodeScanner.scan_barcode
 
 # --------------------------------------------------------------------------------
 # STUDENT CODE BEGINS
-#
+# ---------------------------------------------------------------------------------
+
+
 
 # home position (x,y,z):(0.4286260279762155, 0.00032883239189427694, 0.47260234589243955)
 
@@ -35,24 +37,33 @@ sponge_position = [0.601589513943846, 0.18405054582466013, 0.1017034840790052]
 def lvl_1():
     arm.home()
 
-    arm.rotate_gripper(-80)
+    #arm.rotate_gripper(-80)
     arm.rotate_base(18)
 
 
-    arm.rotate_elbow(-15)
+    arm.rotate_elbow(-20)
 
     sleep(1)
-    arm.rotate_shoulder(53)
+    arm.rotate_shoulder(49)
     sleep(1)
     arm.rotate_gripper(100)
 
     arm.rotate_shoulder(-20)
     arm.set_arm_position(dropbox_position)
-    arm.rotate_gripper(-80)
+    arm.rotate_gripper(80)
 
 #lvl_1()
 
-arm.rotate_gripper(80)
+
+#Sponge
+#Sponge Bottle
+
+
+#Sponge Bottle Rook WitchHat
+
+
+#Sponge
+
 #arm.home()
 
 def lvl_2():
@@ -96,6 +107,25 @@ def lvl_3():
 #lvl_3()
 
 
+def lvl_3a():
+
+    arm.home()
+
+   # arm.rotate_gripper(-80)
+    arm.rotate_base(-5.5)
+
+    arm.rotate_elbow(-20)
+
+    sleep(1)
+    arm.rotate_shoulder(70)
+    sleep(1)
+    arm.rotate_gripper(100)
+
+    arm.set_arm_position(dropbox_position)
+    arm.rotate_gripper(-80)
+
+lvl_3a()
+
 
 
 
@@ -125,3 +155,27 @@ def lvl_3():
 # ---------------------------------------------------------------------------------
 
 #arm.end_arm_connection()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ---------------------------------------------------------------------------------
+# STUDENT CODE ENDS
+# ---------------------------------------------------------------------------------
+
+arm.end_arm_connection()
