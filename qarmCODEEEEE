@@ -3,7 +3,6 @@
 # --------------------------------------------------------------------------------
 
 import sys
-
 sys.path.append("../")
 
 from time import sleep
@@ -13,165 +12,109 @@ GRIPPER_IMPLEMENTATION = 1
 arm = QArmInterface(GRIPPER_IMPLEMENTATION)
 scan_barcode = BarcodeScanner.scan_barcode
 
+# ------------------------- GRIPPER CONTROL --------------------------
+
+# rotate_gripper(-80) = open, rotate_gripper(100) = closed.
+
+def open_gripper():
+    arm.rotate_gripper(-80)
+
+def close_gripper():
+    arm.rotate_gripper(100)
+
 # --------------------------------------------------------------------------------
 # STUDENT CODE BEGINS
 # ---------------------------------------------------------------------------------
 
-
-
-# home position (x,y,z):(0.4286260279762155, 0.00032883239189427694, 0.47260234589243955)
-
-# box position (x,y,z): (0.24088816810517527, -0.30158927247740874, 0.22464027501111783)
-
-
-
-
 dropbox_position = [0.24088816810517527, -0.30158927247740874, 0.22464027501111783]
 
-sponge_position = [0.601589513943846, 0.18405054582466013, 0.1017034840790052]
 
-
-
-#arm.set_arm_position(box_position)
+# ------------------------------ LEVEL 1 ------------------------------
 
 def lvl_1():
+
     arm.home()
 
-    #arm.rotate_gripper(-80)
+    # start open
+    open_gripper()
+
+ 
     arm.rotate_base(18)
-
-
     arm.rotate_elbow(-20)
-
     sleep(1)
     arm.rotate_shoulder(49)
     sleep(1)
-    arm.rotate_gripper(100)
 
+    # close to grab
+    close_gripper()
+
+    # move to dropbox
     arm.rotate_shoulder(-20)
     arm.set_arm_position(dropbox_position)
-    arm.rotate_gripper(80)
 
-#lvl_1()
-
-
-#Sponge
-#Sponge Bottle
+    # open to release
+    open_gripper()
 
 
-#Sponge Bottle Rook WitchHat
-
-
-#Sponge
-
-#arm.home()
+# ------------------------------ LEVEL 2 ------------------------------
 
 def lvl_2():
+
     arm.home()
 
-    arm.rotate_gripper(-80)
+    open_gripper()
+
     arm.rotate_base(11)
-
     arm.rotate_elbow(-18)
-
     sleep(1)
     arm.rotate_shoulder(50)
 
-    arm.rotate_gripper(100)
+    close_gripper()
 
     arm.rotate_shoulder(-20)
     arm.set_arm_position(dropbox_position)
-    arm.rotate_gripper(-80)
+    open_gripper()
 
-#lvl_2()
 
+# ------------------------------ LEVEL 3 ------------------------------
 
 def lvl_3():
 
     arm.home()
 
-    arm.rotate_gripper(-80)
+    open_gripper()
+
     arm.rotate_base(5)
-
     arm.rotate_elbow(-15.8)
-
     sleep(1)
     arm.rotate_shoulder(50)
     sleep(1)
-    arm.rotate_gripper(100)
+
+    close_gripper()
 
     arm.rotate_shoulder(-20)
     arm.set_arm_position(dropbox_position)
-    arm.rotate_gripper(-80)
+    open_gripper()
 
-#lvl_3()
 
+# ------------------------------ LEVEL 3a ------------------------------
 
 def lvl_3a():
 
     arm.home()
 
-   # arm.rotate_gripper(-80)
+    open_gripper()
+
     arm.rotate_base(-5.5)
-
     arm.rotate_elbow(-20)
-
     sleep(1)
     arm.rotate_shoulder(70)
     sleep(1)
-    arm.rotate_gripper(100)
+
+    close_gripper()
 
     arm.set_arm_position(dropbox_position)
-    arm.rotate_gripper(-80)
-
-lvl_3a()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ---------------------------------------------------------------------------------
-# STUDENT CODE ENDS
-# ---------------------------------------------------------------------------------
-
-#arm.end_arm_connection()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    open_gripper()
 
 
 # ---------------------------------------------------------------------------------
